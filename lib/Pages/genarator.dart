@@ -26,6 +26,13 @@ class GeneratorPage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               ElevatedButton.icon(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(
+                      Color.fromARGB(69, 255, 255, 255)),
+                  elevation: MaterialStateProperty.all(5),
+                  foregroundColor: MaterialStateProperty.all(
+                      Color.fromARGB(255, 0, 255, 251)),
+                ),
                 onPressed: () {
                   appState.toggleFavorite();
                 },
@@ -34,6 +41,13 @@ class GeneratorPage extends StatelessWidget {
               ),
               SizedBox(width: 10),
               ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(
+                      Color.fromARGB(69, 255, 255, 255)),
+                  elevation: MaterialStateProperty.all(5),
+                  foregroundColor: MaterialStateProperty.all(
+                      Color.fromARGB(255, 0, 255, 251)),
+                ),
                 onPressed: () {
                   appState.getNext();
                 },
@@ -63,7 +77,7 @@ class BigCard extends StatelessWidget {
     );
 
     return Card(
-      color: theme.colorScheme.primary,
+      color: Color.fromARGB(69, 255, 255, 255),
       elevation: 5,
       child: Padding(
         padding: const EdgeInsets.all(20.0),

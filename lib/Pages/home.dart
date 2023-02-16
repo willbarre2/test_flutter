@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_flutter_test/Pages/carto.dart';
 import 'package:my_flutter_test/Pages/favs.dart';
 import 'package:my_flutter_test/Pages/genarator.dart';
 
@@ -20,13 +21,22 @@ class _MyHomePageState extends State<MyHomePage> {
       case 1:
         page = Favs();
         break;
+      case 2:
+        page = Carto();
+        break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
 
-    var colorScheme = Theme.of(context).colorScheme;
-    var mainArea = ColoredBox(
-      color: colorScheme.primaryContainer,
+    var mainArea = Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: [
+            Color.fromARGB(255, 0, 11, 168),
+            Color.fromARGB(255, 7, 8, 71),
+          ])),
       child: AnimatedSwitcher(
         duration: Duration(milliseconds: 400),
         child: page,
@@ -39,27 +49,42 @@ class _MyHomePageState extends State<MyHomePage> {
           body: Column(
             children: [
               Expanded(child: mainArea),
-              BottomNavigationBar(
-                backgroundColor: colorScheme.primary,
-                selectedItemColor: Color.fromRGBO(0, 193, 230, 1),
-                showSelectedLabels: false,
-                showUnselectedLabels: false,
-                items: [
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.home),
-                    label: 'Home',
+              Container(
+                decoration: BoxDecoration(boxShadow: const <BoxShadow>[
+                  BoxShadow(
+                    color: Color.fromARGB(67, 0, 0, 0),
+                    offset: Offset(-5, 0),
+                    blurRadius: 10,
                   ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.favorite),
-                    label: 'Favorites',
-                  ),
-                ],
-                currentIndex: selectedIndex,
-                onTap: (value) {
-                  setState(() {
-                    selectedIndex = value;
-                  });
-                },
+                ]),
+                child: BottomNavigationBar(
+                  iconSize: 40,
+                  backgroundColor: Color.fromARGB(255, 2, 8, 92),
+                  selectedItemColor: Color.fromRGBO(0, 193, 230, 1),
+                  unselectedItemColor: Color.fromRGBO(0, 88, 106, 1),
+                  showSelectedLabels: false,
+                  showUnselectedLabels: false,
+                  items: [
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.home),
+                      label: 'Home',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.favorite),
+                      label: 'Favorites',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.public),
+                      label: 'Carto',
+                    ),
+                  ],
+                  currentIndex: selectedIndex,
+                  onTap: (value) {
+                    setState(() {
+                      selectedIndex = value;
+                    });
+                  },
+                ),
               ),
             ],
           ),

@@ -11,24 +11,33 @@ class Favs extends StatelessWidget {
 
     if (appState.favorites.isEmpty) {
       return Center(
-        child: Text('No favorites yet.'),
+        child: Text(
+          'No favorites yet.',
+        ),
       );
     }
 
     return ListView(
       children: [
         Padding(
-          padding: const EdgeInsets.all(20),
-          child: Text('You have '
-              '${appState.favorites.length} favorites:'),
+          padding: const EdgeInsets.all(10),
+          child: Text(
+            'You have '
+            '${appState.favorites.length} favorites:',
+          ),
         ),
         for (var fav in appState.favorites)
           Container(
+            margin: const EdgeInsets.only(left: 10, right: 10, bottom: 5),
             decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary,
-                border: Border(bottom: BorderSide(color: Color(0xFFFFFFFF)))),
+              color: Color.fromARGB(69, 255, 255, 255),
+              borderRadius: const BorderRadius.all(Radius.circular(20)),
+            ),
             child: ListTile(
-              leading: Icon(Icons.done),
+              leading: Icon(
+                Icons.done,
+                color: Colors.white,
+              ),
               title: Text(fav.toString()),
               onTap: () => appState.removeFromFav(fav),
             ),
